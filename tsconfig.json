@@ -1,0 +1,14 @@
+{
+    "compilerOptions": {
+        "target": "es5",
+        "resolveJsonModule": true,
+        "esModuleInterop": true,
+        "typeRoots": [
+            "src/typescript/index.d.ts",
+            "./node_modules/@types"
+        ]
+    },
+    "include": [
+        "src/*"
+    ]
+}
