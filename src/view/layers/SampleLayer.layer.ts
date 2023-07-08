@@ -2,7 +2,7 @@ import ACustomLayer from './ACustomLayer.layer';
 import SampleObject from '../objects/SampleObject.object';
 
 /**
- * An example for a Scene Layer 
+ * An example for a Scene Layer
  */
 export default class SampleLayer extends ACustomLayer {
     private object1: SampleObject;
@@ -11,6 +11,7 @@ export default class SampleLayer extends ACustomLayer {
     constructor(scene: Phaser.Scene, children?: Phaser.GameObjects.GameObject[]) {
         super(scene, children);
 
+        //* Objects
         this.object1 = this.scene.add.object_sample(100, 100, "Object 1");
 
         this.object2 = this.scene.add.object_sample(400, 200);

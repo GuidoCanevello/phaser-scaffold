@@ -9,9 +9,9 @@ import SampleLayer from '../layers/SampleLayer.layer';
 const viewMediator = ViewMediator.getInstance();
 
 /**
- * A Test scene to implement the initial code
+ * A Sample scene
  */
-export class TestScene extends Phaser.Scene {
+export class SampleScene extends Phaser.Scene {
     private sceneLayers: ACustomLayer[];
 
     private sampleLayer: SampleLayer;

@@ -49,6 +49,11 @@ export default class SampleObject extends ACustomObject {
         });
     }
 
+    /**
+     * Starts moving the object in a horizontal line, back and forth
+     * 
+     * @param distance The distance for the object to move
+     */
     startMovement(distance: number = 200) {
         const moveSpeed = 1; // The speed at which the object moves (higher = faster)
 
@@ -63,11 +68,17 @@ export default class SampleObject extends ACustomObject {
             x: this.x + distance,
             y: this.y,
 
+            //* Move the object back and forth
             yoyo: true,
             repeat: -1,
         });
     }
 
+    /**
+     * Changes whether the object is highlighted on screen
+     * 
+     * @param value The new value
+     */
     setHighlighted(value: boolean) {
         if (value) this.rectangle.setFillStyle(0x00ffff);
         else this.rectangle.setFillStyle(0xff00ff);

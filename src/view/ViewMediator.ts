@@ -1,3 +1,6 @@
+/**
+ * A Publisher-Subscriber class that handles communication between elements in the view
+ */
 export default class ViewMediator extends Phaser.Events.EventEmitter {
     private static mediatorInstance: ViewMediator;
 

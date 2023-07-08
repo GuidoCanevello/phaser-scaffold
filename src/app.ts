@@ -1,14 +1,14 @@
 import "phaser";
-import { TestScene } from './view/scenes/testScene.scene';
-// import { GAME_HEIGHT, GAME_WIDTH } from "./config/view.consts";
+import { SampleScene } from './view/scenes/sampleScene.scene';
+import { GAME_HEIGHT, GAME_WIDTH } from "./config/view.consts";
 
 const config: Phaser.Types.Core.GameConfig = {
   // Game title
-  title: "Project Pong",
+  title: "Project Scaffold",
 
   // Resolution
-  width: 640,
-  height: 360,
+  width: GAME_WIDTH,
+  height: GAME_HEIGHT,
 
   // HTML Config
   parent: "game",
@@ -22,7 +22,7 @@ const config: Phaser.Types.Core.GameConfig = {
   pixelArt: true,
 
   // Scenes
-  scene: [TestScene],
+  scene: [SampleScene],
 };
 
 export class MainGame extends Phaser.Game {
