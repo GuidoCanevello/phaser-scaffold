@@ -1,5 +1,5 @@
-import ACustomObject from './ACustomObject.objects';
-import ViewMediator from '../ViewMediator';
+import ACustomObject from '../ACustomObject.objects';
+import ViewMediator from '../../ViewMediator';
 
 const viewMediator = ViewMediator.getInstance();
 
@@ -7,22 +7,24 @@ const viewMediator = ViewMediator.getInstance();
  * An example for a Game Object
  */
 export default class SampleObject extends ACustomObject {
-    private rectangle: Phaser.GameObjects.Rectangle;
-    private text: Phaser.GameObjects.Text;
+    private _rectangle: Phaser.GameObjects.Rectangle;
+    private _text: Phaser.GameObjects.Text;
 
-    private objectName: string;
+    private _tween: Phaser.Tweens.Tween;
+
+    private _objectName: string;
 
     constructor(scene: Phaser.Scene, x: number, y: number, objectName: string = "Sample Object") {
         super(scene, x, y);
 
         //* Data
-        this.objectName = objectName;
+        this._objectName = objectName;
 
         //* Objects
-        this.rectangle = this.scene.add.rectangle(0, 0, 100, 100, 0xff00ff);
-        this.add(this.rectangle);
+        this._rectangle = this.scene.add.rectangle(0, 0, 100, 100, 0xff00ff);
+        this.add(this._rectangle);
 
-        this.text = this.scene.add.text(0, 0, this.objectName, {
+        this._text = this.scene.add.text(0, 0, this._objectName, {
             fontSize: "10px",
             strokeThickness: 0.5,
             align: 'center',
@@ -30,22 +32,22 @@ export default class SampleObject extends ACustomObject {
                 width: 100
             }
         });
-        this.text.setResolution(10);
-        this.text.setOrigin(0.5);
-        this.add(this.text);
+        this._text.setResolution(10);
+        this._text.setOrigin(0.5);
+        this.add(this._text);
 
         //* Events
-        this.rectangle.setInteractive();
-        this.rectangle.on('pointerover', () => {
+        this._rectangle.setInteractive();
+        this._rectangle.on('pointerover', () => {
             this.setHighlighted(true);
         });
 
-        this.rectangle.on('pointerout', () => {
+        this._rectangle.on('pointerout', () => {
             this.setHighlighted(false);
         });
 
-        this.rectangle.on('pointerup', () => {
-            viewMediator.emit('V-SAMPLE-EVENT', this.objectName);
+        this._rectangle.on('pointerup', () => {
+            viewMediator.emit('V-SAMPLE-EVENT', this._objectName);
         });
     }
 
@@ -55,9 +57,11 @@ export default class SampleObject extends ACustomObject {
      * @param distance The distance for the object to move
      */
     startMovement(distance: number = 200) {
+        if (this._tween != undefined) this._tween.remove();
+        
         const moveSpeed = 1; // The speed at which the object moves (higher = faster)
 
-        this.scene.tweens.add({
+        this._tween = this.scene.tweens.add({
             targets: this,
             ease: 'Linear',
 
@@ -80,13 +84,13 @@ export default class SampleObject extends ACustomObject {
      * @param value The new value
      */
     setHighlighted(value: boolean) {
-        if (value) this.rectangle.setFillStyle(0x00ffff);
-        else this.rectangle.setFillStyle(0xff00ff);
+        if (value) this._rectangle.setFillStyle(0x00ffff);
+        else this._rectangle.setFillStyle(0xff00ff);
     }
 }
 
 //* Register the Object
-import registerObject from '../utils/registerObject';
+import registerObject from '../../utils/registerObject';
 registerObject('object_sample', SampleObject);
 
 declare global {

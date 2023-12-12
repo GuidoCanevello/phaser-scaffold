@@ -1,5 +1,6 @@
 import "phaser";
-import { SampleScene } from './view/scenes/sampleScene.scene';
+import SampleScene from './view/scenes/sample-scene/Scene.sampleScene';
+import SampleUIScene from './view/scenes/sample-ui-scene/Scene.sampleUIScene';
 import { GAME_HEIGHT, GAME_WIDTH } from "./config/view.consts";
 
 const config: Phaser.Types.Core.GameConfig = {
@@ -22,7 +23,7 @@ const config: Phaser.Types.Core.GameConfig = {
   pixelArt: true,
 
   // Scenes
-  scene: [SampleScene],
+  scene: [SampleScene, SampleUIScene],
 };
 
 export class MainGame extends Phaser.Game {

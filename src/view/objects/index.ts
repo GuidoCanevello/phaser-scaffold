@@ -1,3 +1,5 @@
 import './ACustomObject.objects';
 
-import './SampleObject.object';
+import './entities/SampleObject.view';
+
+import './ui/SampleUIObject.view';

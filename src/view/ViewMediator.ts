@@ -2,7 +2,7 @@
  * A Publisher-Subscriber class that handles communication between elements in the view
  */
 export default class ViewMediator extends Phaser.Events.EventEmitter {
-    private static mediatorInstance: ViewMediator;
+    private static _mediatorInstance: ViewMediator;
 
     private constructor() {
         super();
@@ -30,9 +30,9 @@ export default class ViewMediator extends Phaser.Events.EventEmitter {
      * @returns The Singleton instance
      */
     static getInstance(): ViewMediator {
-        if (!this.mediatorInstance) {
-            this.mediatorInstance = new ViewMediator();
+        if (!this._mediatorInstance) {
+            this._mediatorInstance = new ViewMediator();
         }
-        return this.mediatorInstance;
+        return this._mediatorInstance;
     }
 }
