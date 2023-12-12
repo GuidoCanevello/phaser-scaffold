@@ -35,3 +35,9 @@ export class MainGame extends Phaser.Game {
 window.onload = () => {
   var game = new MainGame(config);
 };
+
+// TODO Add Sample Asset
+// TODO Add Sample Controller
+// TODO Add Sample Model
+// TODO Add Sample utils
+// TODO Update README
